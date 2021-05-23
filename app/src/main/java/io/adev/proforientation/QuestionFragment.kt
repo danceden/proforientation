@@ -21,20 +21,20 @@ class QuestionFragment : Fragment(R.layout.question_fragment) {
         val answerRecycler: RecyclerView = view.findViewById(R.id.answerRecycler)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://gist.githubusercontent.com")
+            .baseUrl("https://a8a01126fc8a.ngrok.io/")
             .addConverterFactory(GsonConverterFactory.create(Gson()))
             .build();
 
         val api = retrofit.create(MainApi::class.java)
 
-        api.getAnswers().enqueue(object : Callback<List<String>> {
-            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+        api.getAnswers().enqueue(object : Callback<Question> {
+            override fun onFailure(call: Call<Question>, t: Throwable) {
                 TODO("Not yet implemented")
             }
 
-            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
+            override fun onResponse(call: Call<Question>, response: Response<Question>) {
                 answerRecycler.adapter =
-                    AnswerAdapter(list = response.body() ?: listOf("Да", "Нет"))
+                    AnswerAdapter(list = response.body() ?.answers ?: listOf())
             }
         })
     }

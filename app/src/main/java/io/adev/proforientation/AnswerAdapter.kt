@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.RadioButton
 import androidx.recyclerview.widget.RecyclerView
 
-class AnswerAdapter(val list: List<String>) : RecyclerView.Adapter<AnswerViewHolder>(){
+class AnswerAdapter(val list: List<Question.Answer>) : RecyclerView.Adapter<AnswerViewHolder>(){
 
     // [ "Привет" , "Как дела" , "Иди в" ]
     // Переопределяется функция onCreateViewHolder принимая значение parent , которая возвращает
@@ -23,7 +23,7 @@ class AnswerAdapter(val list: List<String>) : RecyclerView.Adapter<AnswerViewHol
     override fun onBindViewHolder(holder: AnswerViewHolder, position: Int) {
         val answerwButton = holder.itemView.findViewById<Button>(R.id.answerButton)
         val answer = list.get(position)
-        answerwButton.text = answer
+        answerwButton.text = answer.text
     }
 
     override fun getItemCount(): Int {
