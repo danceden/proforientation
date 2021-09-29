@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Proforientation</string>
+    <string name="questionText">Текст вопроса</string>
 </resources>
